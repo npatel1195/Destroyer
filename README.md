@@ -1,2 +1,2 @@
-# real-time-chatting-app
-AI chat bot and massanger
+# real-time-chatting-applicatin 
+AI chat bot and messanger
