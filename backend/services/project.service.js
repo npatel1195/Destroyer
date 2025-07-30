@@ -25,9 +25,7 @@ export const createProject = async ({
     }
 
     return project;
-
 }
-
 
 export const getAllProjectByUserId = async ({ userId }) => {
     if (!userId) {
@@ -38,11 +36,10 @@ export const getAllProjectByUserId = async ({ userId }) => {
         users: userId
     })
 
-    return allUserProjects
+    return allUserProjects;
 }
 
 export const addUsersToProject = async ({ projectId, users, userId }) => {
-
     if (!projectId) {
         throw new Error("projectId is required")
     }
@@ -67,13 +64,10 @@ export const addUsersToProject = async ({ projectId, users, userId }) => {
         throw new Error("Invalid userId")
     }
 
-
     const project = await projectModel.findOne({
         _id: projectId,
         users: userId
     })
-
-    console.log(project)
 
     if (!project) {
         throw new Error("User not belong to this project")
@@ -91,10 +85,7 @@ export const addUsersToProject = async ({ projectId, users, userId }) => {
         new: true
     })
 
-    return updatedProject
-
-
-
+    return updatedProject;
 }
 
 export const getProjectById = async ({ projectId }) => {

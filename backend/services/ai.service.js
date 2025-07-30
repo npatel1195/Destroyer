@@ -1,5 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai"
-
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
 const model = genAI.getGenerativeModel({
@@ -25,11 +24,9 @@ const model = genAI.getGenerativeModel({
 
                 const app = express();
 
-
                 app.get('/', (req, res) => {
                     res.send('Hello World!');
                 });
-
 
                 app.listen(3000, () => {
                     console.log('Server is running on port 3000');
@@ -84,8 +81,6 @@ const model = genAI.getGenerativeModel({
    
     </example>
 
-
-    
        <example>
 
        user:Hello 
@@ -102,8 +97,13 @@ const model = genAI.getGenerativeModel({
 });
 
 export const generateResult = async (prompt) => {
-
-    const result = await model.generateContent(prompt);
-
-    return result.response.text()
+    try {
+        const result = await model.generateContent(prompt);
+        const text = await result.response.text();
+        // Always return a string
+        return typeof text === 'string' ? text : JSON.stringify(text);
+    } catch (error) {
+        // Return error as stringified JSON
+        return JSON.stringify({ error: error.message });
+    }
 }

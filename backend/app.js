@@ -19,12 +19,11 @@ app.use(cookieParser());
 
 app.use('/users', userRoutes);
 app.use('/projects', projectRoutes);
-app.use("/ai", aiRoutes)
-
-
+app.use("/ai", aiRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).send(JSON.stringify({ message: 'Hello World!' }));
 });
 
-export default app; 
+export default app;

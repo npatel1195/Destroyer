@@ -5,8 +5,10 @@ export const getResult = async (req, res) => {
     try {
         const { prompt } = req.query;
         const result = await ai.generateResult(prompt);
-        res.send(result);
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).send(typeof result === 'string' ? JSON.stringify({ result }) : JSON.stringify(result));
     } catch (error) {
-        res.status(500).send({ message: error.message });
+        res.setHeader('Content-Type', 'application/json');
+        res.status(500).send(JSON.stringify({ message: error.message }));
     }
 }
