@@ -5,10 +5,10 @@ import axios from '../config/axios'
 import { initializeSocket, receiveMessage, sendMessage } from '../config/socket'
 import Markdown from 'markdown-to-jsx'
 import hljs from 'highlight.js';
-import { getWebContainer } from '../config/webcontainer'
+import { getWebContainer } from '../config/WebContainer'
 
 // Option A (if file is at frontend/src/config/webcontainer.js)
-import webcontainer from "../config/webcontainer";
+import webcontainer from "../config/WebContainer";
 
 
 function SyntaxHighlightedCode(props) {
