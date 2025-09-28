@@ -8,3 +8,7 @@ export const getWebContainer = async () => {
     }
     return webContainerInstance;
 }
+
+// minimal placeholder so build passes; replace with your real config later
+const webcontainer = { enabled: false, baseUrl: "" };
+export default webcontainer;
