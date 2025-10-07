@@ -9,6 +9,10 @@ import { generateResult } from './services/ai.service.js';
 
 const port = process.env.PORT || 3000;
 
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 125 * 1000;
+
+
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
